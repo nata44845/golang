@@ -50,4 +50,34 @@ func main() {
 	fmt.Printf("Количество слов: %d\n", wordLine+1)
 	fmt.Printf("Количество букв: %d\n", symbolNumber)
 	fmt.Printf("Количество байт: %d\n", bytesNumber)
+
+	// Вариант 3
+	bytesNumber = len(text)
+	wordLine = 0
+	symbolNumber = 0
+
+	var clean string
+	prev = 0
+
+	for _, s := range text {
+		if unicode.IsLetter(s) || !(unicode.IsSpace(prev) && unicode.IsSpace(s)) {
+			clean += string(s)
+		}
+
+		prev = s
+		if unicode.IsLetter(s) {
+			symbolNumber++
+		}
+	}
+	fmt.Println(clean)
+
+	for _, s := range clean {
+		if unicode.IsSpace(s) {
+			wordLine++
+		}
+	}
+
+	fmt.Printf("Количество слов: %d\n", wordLine)
+	fmt.Printf("Количество букв: %d\n", symbolNumber)
+	fmt.Printf("Количество байт: %d\n", bytesNumber)
 }
