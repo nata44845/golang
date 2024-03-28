@@ -36,6 +36,7 @@ func main() {
 
 	items := make([]*Item, 0)
 
+	// Подключаем отслеживание нажатия клавиш
 	if err := keyboard.Open(); err != nil {
 		log.Fatal(err)
 	}
@@ -43,7 +44,6 @@ func main() {
 OuterLoop:
 	for {
 		fmt.Print("Введите команду буквой (a)ppend, (l)ist, (r)emove>")
-		// Подключаем отслеживание нажатия клавиш
 
 		char, key, err := keyboard.GetKey()
 		if err != nil {
