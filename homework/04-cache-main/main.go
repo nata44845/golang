@@ -53,6 +53,8 @@ func (d *dbImpl) Get(k string) (string, bool) {
 func main() {
 	c := newCacheImpl()
 	db := newDbImpl(c)
+	db.cache.Set("set", "SetValue")
 	fmt.Println(db.Get("test"))
 	fmt.Println(db.Get("hello"))
+	fmt.Println(db.Get("set"))
 }
